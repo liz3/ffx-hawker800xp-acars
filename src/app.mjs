@@ -36,7 +36,6 @@ class Hawker800XpAcars extends WT21FmcAvionicsPlugin {
   isHawker800XP() {
     if (this.cached !== undefined) return this.cached;
     const xml = document.querySelector("wt21-fmc").xmlConfig;
-   console.log( new XMLSerializer().serializeToString(xml))
     if (
       xml &&
       new XMLSerializer().serializeToString(xml).toLowerCase().includes("800xp")
@@ -52,9 +51,7 @@ class Hawker800XpAcars extends WT21FmcAvionicsPlugin {
   onInit() {}
   onInstalled() {}
   registerFmcExtensions(context) {
-    if (!this.isHawker800XP()) {
-      
-    }
+    if (!this.isHawker800XP()) return;
     this.renderer = context.renderer;
     this.cduRenderer = new CduRenderer(this.renderer, this.binder);
 

@@ -930,7 +930,7 @@ ${content}`,
         "acars_messages_recv_response",
         {
           messages: acars.messages.filter(
-            (e) => e.type !== "send" && (v.type === "aoc" ? e.cpdlc === void 0 : e.cpdlc !== void 0)
+            (e) => e.type !== "send" && (v.type === "aoc" ? !e.cpdlc : e.cpdlc)
           )
         },
         true,
@@ -3259,7 +3259,6 @@ ${content}`,
     isHawker800XP() {
       if (this.cached !== void 0) return this.cached;
       const xml = document.querySelector("wt21-fmc").xmlConfig;
-      console.log(new XMLSerializer().serializeToString(xml));
       if (xml && new XMLSerializer().serializeToString(xml).toLowerCase().includes("800xp")) {
         return this.cached = true;
       }
@@ -3273,8 +3272,7 @@ ${content}`,
     onInstalled() {
     }
     registerFmcExtensions(context) {
-      if (!this.isHawker800XP()) {
-      }
+      if (!this.isHawker800XP()) return;
       this.renderer = context.renderer;
       this.cduRenderer = new CduRenderer_default(this.renderer, this.binder);
       context.addPluginPageRoute(

@@ -230,8 +230,8 @@ const acarsService = (bus) => {
             (e) =>
               e.type !== "send" &&
               (v.type === "aoc"
-                ? e.cpdlc === undefined
-                : e.cpdlc !== undefined),
+                ? !e.cpdlc
+                : e.cpdlc),
           ),
         },
         true,
