@@ -1,0 +1,6 @@
+<Plugins>
+
+  <Plugin target="WT21_FMC">
+    coui://html_ui/liz3-ffx-hawker800xp-acars/hawker800xp-acars.js
+  </Plugin>
+</Plugins>
