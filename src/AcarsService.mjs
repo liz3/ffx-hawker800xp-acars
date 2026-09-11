@@ -155,7 +155,7 @@ const acarsService = (bus) => {
         const message = acars.messages.find((e) => e._id === v.id);
         if (message) {
           message.response(v.option);
-          updateReadState(bus, v.id);
+          // updateReadState(bus, v.id);
           publisher.pub(
             "acars_message_state_update",
             {
